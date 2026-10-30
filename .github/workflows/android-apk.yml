@@ -46,6 +46,8 @@ jobs:
             exit 1
           fi
       - name: Build APK
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
         run: gradle --no-daemon :app:assembleDebug
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
