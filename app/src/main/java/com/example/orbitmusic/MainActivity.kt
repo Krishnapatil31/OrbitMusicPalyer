@@ -32,7 +32,7 @@ data class LocalSong(val id: Long, val title: String, val artist: String, val ur
 
 class MainActivity : AppCompatActivity() {
     // Client ID is public app configuration; never put a client secret or access token here.
-    private val spotifyClientId = "YOUR_SPOTIFY_CLIENT_ID"
+    private val spotifyClientId = BuildConfig.SPOTIFY_CLIENT_ID
     private val redirectUri = "orbitmusic://callback"
     private var spotifyRemote: SpotifyAppRemote? = null
     private var spotifyIsPaused = true
