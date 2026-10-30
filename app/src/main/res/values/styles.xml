@@ -1,9 +1,14 @@
 <resources>
-    <style name="Theme.OrbitMusic" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">#1DB954</item>
-        <item name="colorPrimaryVariant">#168A40</item>
-        <item name="colorOnPrimary">#000000</item>
-        <item name="android:statusBarColor">#101010</item>
-        <item name="android:navigationBarColor">#101010</item>
-    </style>
-</resources>
+<style name="Theme.OrbitMusic" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+<item name="colorPrimary">#8B7CFF</item><item name="colorPrimaryVariant">#6757D9</item><item name="colorOnPrimary">#FFFFFF</item><item name="colorSecondary">#25D6C8</item>
+<item name="android:fontFamily">sans</item><item name="android:windowLightStatusBar">false</item><item name="android:statusBarColor">#090D18</item><item name="android:navigationBarColor">#090D18</item><item name="android:windowBackground">#090D18</item><item name="materialButtonStyle">@style/Widget.Orbit.SecondaryButton</item>
+</style>
+<style name="Widget.Orbit.PrimaryButton" parent="Widget.MaterialComponents.Button">
+<item name="backgroundTint">#7667F5</item><item name="android:textColor">#FFFFFF</item><item name="cornerRadius">16dp</item><item name="android:textStyle">bold</item><item name="android:minHeight">48dp</item><item name="android:insetTop">0dp</item><item name="android:insetBottom">0dp</item>
+</style>
+<style name="Widget.Orbit.SecondaryButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+<item name="strokeColor">#514A86</item><item name="strokeWidth">1dp</item><item name="android:textColor">#D8D3FF</item><item name="cornerRadius">16dp</item><item name="android:minHeight">48dp</item><item name="android:insetTop">0dp</item><item name="android:insetBottom">0dp</item>
+</style>
+<style name="Widget.Orbit.GhostButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+<item name="strokeColor">#3A4560</item><item name="strokeWidth">1dp</item><item name="android:textColor">#FFFFFF</item><item name="cornerRadius">14dp</item><item name="android:minHeight">44dp</item><item name="android:insetTop">0dp</item><item name="android:insetBottom">0dp</item>
+</style></resources>
