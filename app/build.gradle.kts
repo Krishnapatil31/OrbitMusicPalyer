@@ -5,12 +5,15 @@ plugins {
 android {
     namespace = "com.example.orbitmusic"
     compileSdk = 36
+    buildFeatures { buildConfig = true }
     defaultConfig {
         applicationId = "com.example.orbitmusic"
         minSdk = 23
         targetSdk = 35
         versionCode = 2
         versionName = "1.1.0"
+        val spotifyClientId = System.getenv("SPOTIFY_CLIENT_ID") ?: ""
+        buildConfigField("String", "SPOTIFY_CLIENT_ID", "\\"$spotifyClientId\\"")
     }
 }
 dependencies {
