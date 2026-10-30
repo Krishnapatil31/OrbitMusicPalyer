@@ -7,7 +7,7 @@ Android app starter combining Spotify App Remote controls with local music playb
 ## Included
 - Spotify App Remote connect, playlist URL/URI playback request, track metadata, previous/next/play-pause.
 - Local audio discovery through MediaStore, A–Z sorting, search, and playback using Media3.
-- Direct HTTP(S) audio download for audio the user owns or is legally permitted to save.
+- Direct HTTPS audio download for audio the user owns or is legally permitted to save.
 - GitHub Actions workflow to build a debug APK.
 - Basic repository and app security hardening.
 
@@ -16,7 +16,7 @@ Android app starter combining Spotify App Remote controls with local music playb
 - Spotify playback is controlled through the official Spotify app.
 - Background playback/lock-screen controls are not implemented in this starter.
 - The Spotify App Remote AAR is included in `app/libs`; a valid `SPOTIFY_CLIENT_ID` Actions secret is required for Spotify features.
-- No APK has been built or tested by this commit yet.
+- A successful GitHub Actions build is required before installing an APK. Real-device testing is still required.
 
 ## Configure Spotify
 1. Create an app in the Spotify Developer Dashboard.
@@ -44,13 +44,13 @@ A successful workflow run is required before an APK exists. GitHub-hosted runner
 - Never publish Spotify tokens, client secrets, Android signing keys, or keystores.
 - Review Actions permissions and third-party workflow changes before merging.
 - Keep dependencies updated; Dependabot is configured for Gradle and GitHub Actions.
-- The app disables Android backup and cleartext HTTP network traffic. The audio downloader still accepts HTTP links because some legal direct-download hosts do not offer HTTPS; prefer HTTPS links.
+- The app disables Android backup and cleartext HTTP network traffic. The audio downloader accepts HTTPS links only.
 
 ## Versioning
 For every app update, increment `versionCode` and update `versionName` in `app/build.gradle.kts`. Example next release: versionName 1.2.0, versionCode 3.
 
 ## Known unfinished work
-- Confirm the registered Spotify Android package name and signing fingerprint match the installed build.
+- Confirm the registered Spotify Android package name and stable signing fingerprint match the installed build.
 - Add and test app signing for release APKs.
 - Add persistent background playback and media notification controls.
 - Run a real Android build and device test; the GitHub workflow has not been executed yet.
