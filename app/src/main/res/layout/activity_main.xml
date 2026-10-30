@@ -1,54 +1,43 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#101010" android:fillViewport="true">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="vertical" android:padding="20dp">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="ORBIT MUSIC" android:textColor="#1DB954" android:textStyle="bold" android:textSize="26sp" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Spotify Remote + Local Music" android:textColor="#BBBBBB" android:layout_marginBottom="16dp" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="SPOTIFY" android:textColor="#FFFFFF" android:textStyle="bold" />
-        <Button android:id="@+id/spotifyConnect" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Connect to Spotify" />
-        <EditText android:id="@+id/playlistUrl" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:hint="Paste Spotify playlist link or URI" android:inputType="textUri"
-            android:textColor="#FFFFFF" android:textColorHint="#999999" android:backgroundTint="#1DB954" />
-        <Button android:id="@+id/openPlaylist" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Open / Play Spotify Playlist" />
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-            <Button android:id="@+id/spotifyPrevious" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Previous" />
-            <Button android:id="@+id/spotifyToggle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Play / Pause" />
-            <Button android:id="@+id/spotifyNext" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Next" />
-        </LinearLayout>
-        <TextView android:id="@+id/spotifyStatus" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="Spotify not connected" android:textColor="#BBBBBB" android:padding="8dp" />
-        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#444444"
-            android:layout_marginTop="18dp" android:layout_marginBottom="18dp" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LOCAL MUSIC" android:textColor="#FFFFFF" android:textStyle="bold" />
-        <Button android:id="@+id/scanMusic" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Load songs on this phone" />
-        <EditText android:id="@+id/searchSongs" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:hint="Search songs A–Z" android:inputType="text" android:textColor="#FFFFFF"
-            android:textColorHint="#999999" android:backgroundTint="#1DB954" />
-        <TextView android:id="@+id/localStatus" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="No songs loaded" android:textColor="#BBBBBB" android:padding="8dp" />
-        <ListView android:id="@+id/songList" android:layout_width="match_parent" android:layout_height="320dp"
-            android:divider="#333333" android:dividerHeight="1dp" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NOW PLAYING (LOCAL)"
-            android:textColor="#FFFFFF" android:textStyle="bold" android:layout_marginTop="16dp" />
-        <TextView android:id="@+id/currentSong" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="Choose a local song" android:textColor="#FFFFFF" android:padding="8dp" />
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-            <Button android:id="@+id/localPrevious" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Previous" />
-            <Button android:id="@+id/localToggle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Play / Pause" />
-            <Button android:id="@+id/localNext" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Next" />
-        </LinearLayout>
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DOWNLOAD A LEGAL AUDIO URL"
-            android:textColor="#FFFFFF" android:textStyle="bold" android:layout_marginTop="18dp" />
-        <EditText android:id="@+id/audioUrl" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:hint="Direct MP3 / audio URL" android:inputType="textUri" android:textColor="#FFFFFF"
-            android:textColorHint="#999999" android:backgroundTint="#1DB954" />
-        <Button android:id="@+id/downloadAudio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Download audio file" />
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="Downloads are for direct URLs you have permission to download. Spotify tracks cannot be downloaded through this app."
-            android:textColor="#999999" android:textSize="12sp" android:paddingTop="8dp" />
-    </LinearLayout>
-</ScrollView>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#090D18" android:fillViewport="true">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:paddingTop="12dp" android:paddingBottom="20dp">
+<TextView android:layout_width="48dp" android:layout_height="48dp" android:gravity="center" android:text="◉" android:textColor="#FFFFFF" android:textSize="30sp" android:background="@drawable/ic_orbit_launcher"/>
+<LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingStart="12dp">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ORBIT MUSIC" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="23sp"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="YOUR MUSIC. YOUR UNIVERSE." android:textColor="#8994AD" android:textSize="10sp" android:letterSpacing="0.12"/></LinearLayout>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="♪" android:textColor="#8B7CFF" android:textSize="28sp"/></LinearLayout>
+<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#151C2D" app:cardCornerRadius="22dp" app:strokeColor="#29334B" app:strokeWidth="1dp" app:cardElevation="0dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SPOTIFY CONNECT" android:textColor="#A9B4CC" android:textStyle="bold" android:textSize="12sp"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Listen without limits." android:textColor="#FFFFFF" android:textSize="21sp" android:textStyle="bold" android:layout_marginTop="7dp"/>
+<TextView android:id="@+id/spotifyStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Spotify is not connected" android:textColor="#AAB5CC" android:textSize="13sp" android:paddingTop="5dp" android:paddingBottom="10dp"/>
+<Button android:id="@+id/spotifyConnect" android:layout_width="match_parent" android:layout_height="50dp" android:text="Connect Spotify" android:textAllCaps="false" style="@style/Widget.Orbit.PrimaryButton"/>
+<EditText android:id="@+id/playlistUrl" android:layout_width="match_parent" android:layout_height="52dp" android:hint="Paste Spotify playlist link" android:inputType="textUri" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#7F8AA3" android:paddingStart="14dp" android:background="@drawable/orbit_input" android:layout_marginTop="12dp"/>
+<Button android:id="@+id/openPlaylist" android:layout_width="match_parent" android:layout_height="48dp" android:text="Play playlist" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
+<Button android:id="@+id/spotifyPrevious" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:text="|◀" android:textAllCaps="false" style="@style/Widget.Orbit.GhostButton"/>
+<Button android:id="@+id/spotifyToggle" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:text="▶ / ❚❚" android:textAllCaps="false" style="@style/Widget.Orbit.GhostButton"/>
+<Button android:id="@+id/spotifyNext" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:text="▶|" android:textAllCaps="false" style="@style/Widget.Orbit.GhostButton"/></LinearLayout></LinearLayout></com.google.android.material.card.MaterialCardView>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="YOUR LIBRARY" android:textColor="#FFFFFF" android:textSize="17sp" android:textStyle="bold" android:paddingTop="24dp" android:paddingBottom="10dp"/>
+<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#151C2D" app:cardCornerRadius="22dp" app:strokeColor="#29334B" app:strokeWidth="1dp" app:cardElevation="0dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<Button android:id="@+id/scanMusic" android:layout_width="match_parent" android:layout_height="48dp" android:text="＋  Scan phone for music" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton"/>
+<EditText android:id="@+id/searchSongs" android:layout_width="match_parent" android:layout_height="50dp" android:hint="⌕  Search your songs" android:inputType="text" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#7F8AA3" android:paddingStart="14dp" android:background="@drawable/orbit_input" android:layout_marginTop="12dp"/>
+<TextView android:id="@+id/localStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your songs will appear here" android:textColor="#98A4BD" android:textSize="12sp" android:paddingTop="12dp" android:paddingBottom="8dp"/>
+<ListView android:id="@+id/songList" android:layout_width="match_parent" android:layout_height="260dp" android:divider="#29334B" android:dividerHeight="1dp" android:background="#111827" android:padding="6dp"/></LinearLayout></com.google.android.material.card.MaterialCardView>
+<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#201D3A" app:cardCornerRadius="22dp" app:strokeColor="#40396D" app:strokeWidth="1dp" app:cardElevation="0dp" android:layout_marginTop="16dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NOW PLAYING" android:textColor="#B9AEFF" android:textSize="11sp" android:textStyle="bold"/>
+<TextView android:id="@+id/currentSong" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Choose a song to start listening" android:textColor="#FFFFFF" android:textSize="16sp" android:textStyle="bold" android:paddingTop="8dp" android:paddingBottom="12dp"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+<Button android:id="@+id/localPrevious" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:text="|◀" android:textAllCaps="false" style="@style/Widget.Orbit.GhostButton"/>
+<Button android:id="@+id/localToggle" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:text="▶ / ❚❚" android:textAllCaps="false" style="@style/Widget.Orbit.PrimaryButton"/>
+<Button android:id="@+id/localNext" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:text="▶|" android:textAllCaps="false" style="@style/Widget.Orbit.GhostButton"/></LinearLayout></LinearLayout></com.google.android.material.card.MaterialCardView>
+<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#151C2D" app:cardCornerRadius="22dp" app:strokeColor="#29334B" app:strokeWidth="1dp" app:cardElevation="0dp" android:layout_marginTop="16dp" android:layout_marginBottom="24dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AUDIO DOWNLOAD" android:textColor="#FFFFFF" android:textSize="15sp" android:textStyle="bold"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Download direct audio links you have permission to save." android:textColor="#98A4BD" android:textSize="12sp" android:paddingTop="4dp" android:paddingBottom="10dp"/>
+<EditText android:id="@+id/audioUrl" android:layout_width="match_parent" android:layout_height="50dp" android:hint="Direct HTTPS audio URL" android:inputType="textUri" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#7F8AA3" android:paddingStart="14dp" android:background="@drawable/orbit_input"/>
+<Button android:id="@+id/downloadAudio" android:layout_width="match_parent" android:layout_height="48dp" android:text="Download audio" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton" android:layout_marginTop="10dp"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Spotify songs cannot be downloaded through Orbit Music." android:textColor="#78849C" android:textSize="11sp" android:paddingTop="8dp"/></LinearLayout></com.google.android.material.card.MaterialCardView>
+</LinearLayout></ScrollView>
