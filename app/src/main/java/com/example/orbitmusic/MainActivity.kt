@@ -110,8 +110,9 @@ class MainActivity : AppCompatActivity() {
                     .setErrorCallback { spotifyStatus.text = "Player state error" }
             }
             override fun onFailure(throwable: Throwable) {
-                spotifyStatus.text = "Spotify connection failed"
-                toast("Install Spotify, sign in, then try again")
+                val detail = throwable.message?.takeIf { it.isNotBlank() } ?: throwable.javaClass.simpleName
+                spotifyStatus.text = "Spotify connection failed: $detail"
+                toast("Spotify error: $detail")
             }
         })
     }
