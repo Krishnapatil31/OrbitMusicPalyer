@@ -8,6 +8,8 @@
     <application
         android:allowBackup="false"
         android:fullBackupContent="false"
+        android:icon="@drawable/ic_orbit_launcher"
+        android:roundIcon="@drawable/ic_orbit_launcher"
         android:label="Orbit Music"
         android:theme="@style/Theme.OrbitMusic"
         android:usesCleartextTraffic="false"
