@@ -15,20 +15,18 @@ Android app starter combining Spotify App Remote controls with local music playb
 - This does not remove Spotify advertisements, unlock Premium, or download Spotify tracks.
 - Spotify playback is controlled through the official Spotify app.
 - Background playback/lock-screen controls are not implemented in this starter.
-- The official Spotify App Remote AAR and your Spotify Client ID are still required before Spotify features can work.
+- The Spotify App Remote AAR is included in `app/libs`; a valid `SPOTIFY_CLIENT_ID` Actions secret is required for Spotify features.
 - No APK has been built or tested by this commit yet.
 
 ## Configure Spotify
 1. Create an app in the Spotify Developer Dashboard.
-2. Copy its Client ID into `spotifyClientId` in `app/src/main/java/com/example/orbitmusic/MainActivity.kt`.
+2. Add the Client ID as a GitHub Actions repository secret named `SPOTIFY_CLIENT_ID` (Settings → Secrets and variables → Actions).
 3. Register redirect URI exactly as `orbitmusic://callback`.
 4. Register package name `com.example.orbitmusic` and the signing SHA-1 if Spotify requests it.
 5. Never embed a Spotify client secret or access token in the app.
 
-## Add the official Spotify App Remote AAR securely
-Do not commit the AAR to this public repository. Obtain it only from Spotify's official Android SDK documentation/repository. Encode the file as Base64 locally and add it as a GitHub Actions repository secret named `SPOTIFY_APP_REMOTE_AAR_BASE64`.
-
-The workflow expects the AAR file name `spotify-app-remote-release-0.8.0.aar`. The AAR must be legally obtained and its redistribution terms respected.
+## Spotify App Remote SDK dependency
+The official SDK AAR is stored at `app/libs/spotify-app-remote-release-0.8.0.aar` and is validated by the build workflow. The old `SPOTIFY_APP_REMOTE_AAR_BASE64` secret is only a fallback if that file is absent; it should not overwrite the checked-in AAR. Obtain SDK files from Spotify's official Android SDK distribution and follow its license terms.
 
 ## Build APK with GitHub Actions
 1. Open the **Actions** tab.
@@ -52,7 +50,7 @@ A successful workflow run is required before an APK exists. GitHub-hosted runner
 For every app update, increment `versionCode` and update `versionName` in `app/build.gradle.kts`. Example next release: versionName 1.2.0, versionCode 3.
 
 ## Known unfinished work
-- Add Spotify AAR and Client ID.
+- Confirm the registered Spotify Android package name and signing fingerprint match the installed build.
 - Add and test app signing for release APKs.
 - Add persistent background playback and media notification controls.
 - Run a real Android build and device test; the GitHub workflow has not been executed yet.
