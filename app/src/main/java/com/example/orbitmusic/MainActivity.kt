@@ -110,11 +110,24 @@ class MainActivity : AppCompatActivity() {
                     .setErrorCallback { spotifyStatus.text = "Player state error" }
             }
             override fun onFailure(throwable: Throwable) {
-                val detail = throwable.message?.takeIf { it.isNotBlank() } ?: throwable.javaClass.simpleName
-                spotifyStatus.text = "Spotify connection failed: $detail"
-                toast("Spotify error: $detail")
+                val message = friendlySpotifyError(throwable)
+                spotifyStatus.text = message
+                toast(message)
             }
         })
+    }
+
+    private fun friendlySpotifyError(error: Throwable): String {
+        val detail = (error.message.orEmpty() + " " + error.javaClass.simpleName).lowercase()
+        return when {
+            detail.contains("authorization") || detail.contains("not authorized") ->
+                "Spotify permission needed. Open Spotify, sign in, then tap Connect Spotify and allow access."
+            detail.contains("not installed") || detail.contains("package") ->
+                "Please install or update the Spotify app, then try again."
+            detail.contains("network") || detail.contains("timeout") ->
+                "Connection problem. Check your internet and try again."
+            else -> "Couldn't connect to Spotify. Check the Spotify app settings and try again."
+        }
     }
 
     private fun playSpotifyPlaylist() {
@@ -195,8 +208,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun downloadDirectAudio() {
         val url = findViewById<EditText>(R.id.audioUrl).text.toString().trim()
-        if (!(url.startsWith("https://") || url.startsWith("http://")) || !URLUtil.isValidUrl(url)) {
-            toast("Enter a valid direct HTTP(S) audio URL")
+        if (!url.startsWith("https://", ignoreCase = true) || !URLUtil.isValidUrl(url)) {
+            toast("Enter a secure HTTPS direct audio link")
             return
         }
         val filename = URLUtil.guessFileName(url, null, null)
