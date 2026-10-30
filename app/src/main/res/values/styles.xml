@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.OrbitMusic" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#1DB954</item>
+        <item name="colorPrimaryVariant">#168A40</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="android:statusBarColor">#101010</item>
+        <item name="android:navigationBarColor">#101010</item>
+    </style>
+</resources>
