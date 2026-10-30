@@ -6,6 +6,13 @@ android {
     namespace = "com.example.orbitmusic"
     compileSdk = 36
     buildFeatures { buildConfig = true }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
     defaultConfig {
         applicationId = "com.example.orbitmusic"
         minSdk = 23
