@@ -13,7 +13,7 @@ android {
         versionCode = 2
         versionName = "1.1.0"
         val spotifyClientId = System.getenv("SPOTIFY_CLIENT_ID") ?: ""
-        buildConfigField("String", "SPOTIFY_CLIENT_ID", "\\"$spotifyClientId\\"")
+        buildConfigField("String", "SPOTIFY_CLIENT_ID", "\"$spotifyClientId\"")
     }
 }
 dependencies {
