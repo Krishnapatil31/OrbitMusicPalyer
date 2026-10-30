@@ -90,8 +90,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun connectSpotify() {
-        if (spotifyClientId == "YOUR_SPOTIFY_CLIENT_ID") {
-            toast("Add your Spotify Client ID in MainActivity.kt first")
+        if (spotifyClientId.isBlank() || spotifyClientId == "YOUR_SPOTIFY_CLIENT_ID") {
+            toast("Spotify Client ID is missing. Add the SPOTIFY_CLIENT_ID GitHub Actions secret.")
             return
         }
         val params = ConnectionParams.Builder(spotifyClientId)
