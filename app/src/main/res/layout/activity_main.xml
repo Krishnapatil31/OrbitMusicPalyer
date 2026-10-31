@@ -69,7 +69,10 @@
     </com.google.android.material.card.MaterialCardView>
    </LinearLayout>
    <LinearLayout android:id="@+id/searchContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:visibility="gone">
-    <EditText android:id="@+id/searchSongs" android:layout_width="match_parent" android:layout_height="58dp" android:hint="⌕  What do you want to listen to?" android:singleLine="true" android:textColor="#111111" android:textColorHint="#555555" android:background="#FFFFFF" android:padding="12dp"/>
+    <EditText android:id="@+id/searchSongs" android:layout_width="match_parent" android:layout_height="58dp" android:hint="⌕  Search songs or artists online" android:singleLine="true" android:textColor="#111111" android:textColorHint="#555555" android:background="#FFFFFF" android:padding="12dp"/>
+    <Button android:id="@+id/onlineSearchButton" android:layout_width="match_parent" android:layout_height="50dp" android:layout_marginTop="12dp" android:text="Search online music" android:textAllCaps="false" style="@style/Widget.Orbit.PrimaryButton"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Online songs · Audius" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold" android:paddingTop="18dp"/>
+    <LinearLayout android:id="@+id/onlineResults" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Browse all" android:textColor="#FFFFFF" android:textSize="23sp" android:textStyle="bold" android:paddingTop="24dp" android:paddingBottom="14dp"/>
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
      <TextView android:layout_width="0dp" android:layout_height="112dp" android:layout_weight="1" android:layout_margin="4dp" android:gravity="top" android:padding="15dp" android:background="#D4148E" android:text="Music" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
