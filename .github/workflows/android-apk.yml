@@ -38,26 +38,7 @@ jobs:
         with:
           gradle-version: '8.13'
           cache-provider: basic
-      - name: Prepare and validate Spotify SDK AAR
-        env:
-          SPOTIFY_APP_REMOTE_AAR_BASE64: ${{ secrets.SPOTIFY_APP_REMOTE_AAR_BASE64 }}
-        run: |
-          mkdir -p app/libs
-          AAR="app/libs/spotify-app-remote-release-0.8.0.aar"
-          if [ ! -s "$AAR" ] && [ -n "$SPOTIFY_APP_REMOTE_AAR_BASE64" ]; then
-            printf '%s' "$SPOTIFY_APP_REMOTE_AAR_BASE64" | base64 --decode > "$AAR"
-          fi
-          if [ ! -s "$AAR" ]; then
-            echo "::error::Missing Spotify App Remote SDK AAR in app/libs."
-            exit 1
-          fi
-          if ! unzip -tq "$AAR"; then
-            echo "::error::Spotify App Remote AAR is not a valid ZIP archive. Replace the AAR with a fresh official SDK download."
-            exit 1
-          fi
       - name: Build APK
-        env:
-          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
         run: gradle --no-daemon :app:assembleDebug
       - name: Show APK signing certificate fingerprint
         run: |
@@ -67,7 +48,7 @@ jobs:
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: OrbitMusicPlayer-v1.1.0-debug-apk
+          name: OrbitMusicPlayer-v1.2.0-debug-apk
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 7
