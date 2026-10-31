@@ -19,8 +19,6 @@ android {
         targetSdk = 35
         versionCode = 2
         versionName = "1.1.0"
-        val spotifyClientId = System.getenv("SPOTIFY_CLIENT_ID") ?: ""
-        buildConfigField("String", "SPOTIFY_CLIENT_ID", "\"$spotifyClientId\"")
     }
 }
 dependencies {
@@ -29,6 +27,5 @@ dependencies {
     implementation("com.google.android.material:material:1.13.0")
     implementation("androidx.media3:media3-exoplayer:1.11.1")
     implementation("androidx.media3:media3-common:1.11.1")
-    implementation(files("libs/spotify-app-remote-release-0.8.0.aar"))
     implementation("com.google.code.gson:gson:2.13.2")
 }
