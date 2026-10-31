@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
  android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#121212">
- <ScrollView android:id="@+id/mainScroll" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
+ <LinearLayout android:id="@+id/authScreen" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:padding="28dp" android:background="#121212">
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="◉ ORBIT" android:textColor="#1ED760" android:textSize="34sp" android:textStyle="bold"/>
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Music for every moment" android:textColor="#FFFFFF" android:textSize="24sp" android:textStyle="bold" android:layout_marginTop="14dp"/>
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sign in or create your account to continue" android:textColor="#B3B3B3" android:textSize="14sp" android:layout_marginTop="8dp" android:layout_marginBottom="30dp"/>
+  <Button android:id="@+id/loginGoogle" android:layout_width="match_parent" android:layout_height="54dp" android:text="Continue with Google" android:textAllCaps="false" android:textColor="#111111" android:backgroundTint="#FFFFFF"/>
+  <Button android:id="@+id/loginSpotify" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="12dp" android:text="Continue with Spotify" android:textAllCaps="false" android:textColor="#FFFFFF" android:backgroundTint="#1DB954"/>
+  <EditText android:id="@+id/authEmail" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="18dp" android:hint="Email address" android:inputType="textEmailAddress" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#999999" android:background="@drawable/orbit_input" android:paddingHorizontal="14dp"/>
+  <EditText android:id="@+id/authPassword" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="10dp" android:hint="Password" android:inputType="textPassword" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#999999" android:background="@drawable/orbit_input" android:paddingHorizontal="14dp"/>
+  <Button android:id="@+id/loginEmail" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="12dp" android:text="Log in" android:textAllCaps="false"/>
+  <Button android:id="@+id/signupEmail" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="4dp" android:text="Sign up with email" android:textAllCaps="false" style="@style/Widget.Orbit.GhostButton"/>
+  <TextView android:id="@+id/continueGuest" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="18dp" android:text="Continue as guest" android:textColor="#FFFFFF" android:textSize="15sp"/>
+ </LinearLayout>
+ <ScrollView android:id="@+id/mainScroll" android:visibility="gone" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
   <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="12dp">
    <LinearLayout android:layout_width="match_parent" android:layout_height="70dp" android:gravity="center_vertical" android:paddingHorizontal="18dp">
     <TextView android:id="@+id/profileButton" android:layout_width="42dp" android:layout_height="42dp" android:gravity="center" android:background="@drawable/ic_orbit_launcher" android:text="O" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="20sp"/>
@@ -101,7 +113,7 @@
    </LinearLayout>
   </LinearLayout>
  </ScrollView>
- <LinearLayout android:layout_width="match_parent" android:layout_height="66dp" android:orientation="horizontal" android:gravity="center" android:background="#080808">
+ <LinearLayout android:id="@+id/bottomNavigation" android:visibility="gone" android:layout_width="match_parent" android:layout_height="66dp" android:orientation="horizontal" android:gravity="center" android:background="#080808">
   <TextView android:id="@+id/navHome" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="⌂\nHome" android:textColor="#FFFFFF" android:textSize="13sp"/>
   <TextView android:id="@+id/navSearch" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="⌕\nSearch" android:textColor="#B3B3B3" android:textSize="13sp"/>
   <TextView android:id="@+id/navLibrary" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="▥\nYour Library" android:textColor="#B3B3B3" android:textSize="12sp"/>
