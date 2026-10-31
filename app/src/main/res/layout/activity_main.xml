@@ -60,7 +60,7 @@
     <LinearLayout android:id="@+id/onlineResults" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Import playlist by URL" android:textColor="#FFFFFF" android:textSize="19sp" android:textStyle="bold" android:paddingTop="24dp"/>
     <EditText android:id="@+id/playlistUrlInput" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="10dp" android:hint="Paste any public playlist URL" android:inputType="textUri" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#999999" android:background="@drawable/orbit_input" android:paddingHorizontal="12dp"/>
-    <Button android:id="@+id/importPlaylistButton" android:layout_width="match_parent" android:layout_height="50dp" android:layout_marginTop="8dp" android:text="Import & save playlist" android:textAllCaps="false"/>
+    <Button android:id="@+id/importPlaylistButton" android:layout_width="match_parent" android:layout_height="50dp" android:layout_marginTop="8dp" android:text="Import &amp; save playlist" android:textAllCaps="false"/>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Saved playlists" android:textColor="#FFFFFF" android:textSize="17sp" android:textStyle="bold" android:paddingTop="16dp"/>
     <LinearLayout android:id="@+id/savedPlaylists" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
     <WebView android:id="@+id/playlistWebView" android:layout_width="match_parent" android:layout_height="280dp" android:visibility="gone"/>
