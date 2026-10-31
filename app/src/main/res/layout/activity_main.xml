@@ -6,7 +6,6 @@
   <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Music for every moment" android:textColor="#FFFFFF" android:textSize="24sp" android:textStyle="bold" android:layout_marginTop="14dp"/>
   <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sign in or create your account to continue" android:textColor="#B3B3B3" android:textSize="14sp" android:layout_marginTop="8dp" android:layout_marginBottom="30dp"/>
   <Button android:id="@+id/loginGoogle" android:layout_width="match_parent" android:layout_height="54dp" android:text="Continue with Google" android:textAllCaps="false" android:textColor="#111111" android:backgroundTint="#FFFFFF"/>
-  <Button android:id="@+id/loginSpotify" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="12dp" android:text="Continue with Spotify" android:textAllCaps="false" android:textColor="#FFFFFF" android:backgroundTint="#1DB954"/>
   <EditText android:id="@+id/authEmail" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="18dp" android:hint="Email address" android:inputType="textEmailAddress" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#999999" android:background="@drawable/orbit_input" android:paddingHorizontal="14dp"/>
   <EditText android:id="@+id/authPassword" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="10dp" android:hint="Password" android:inputType="textPassword" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#999999" android:background="@drawable/orbit_input" android:paddingHorizontal="14dp"/>
   <Button android:id="@+id/loginEmail" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="12dp" android:text="Log in" android:textAllCaps="false"/>
@@ -53,21 +52,7 @@
       <TextView android:layout_width="145dp" android:layout_height="145dp" android:gravity="center" android:background="#51416F" android:text="TOP\nHITS" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="18sp"/>
      </LinearLayout>
     </HorizontalScrollView>
-    <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" app:cardBackgroundColor="#242424" app:cardCornerRadius="18dp" app:strokeWidth="0dp">
-     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Connect your Spotify" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="18sp"/>
-      <TextView android:id="@+id/spotifyStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Spotify is not connected" android:textColor="#B3B3B3" android:paddingTop="5dp"/>
-      <Button android:id="@+id/spotifyConnect" android:layout_width="match_parent" android:layout_height="48dp" android:text="Connect Spotify" android:textAllCaps="false" style="@style/Widget.Orbit.PrimaryButton"/>
-      <EditText android:id="@+id/playlistUrl" android:layout_width="match_parent" android:layout_height="48dp" android:hint="Paste Spotify playlist link" android:inputType="textUri" android:textColor="#FFFFFF" android:textColorHint="#999999" android:background="@drawable/orbit_input" android:paddingHorizontal="12dp"/>
-      <Button android:id="@+id/openPlaylist" android:layout_width="match_parent" android:layout_height="46dp" android:text="Play playlist" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton"/>
-      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-       <Button android:id="@+id/spotifyPrevious" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:text="|◀" style="@style/Widget.Orbit.GhostButton"/>
-       <Button android:id="@+id/spotifyToggle" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:text="▶ / ❚❚" style="@style/Widget.Orbit.GhostButton"/>
-       <Button android:id="@+id/spotifyNext" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:text="▶|" style="@style/Widget.Orbit.GhostButton"/>
-      </LinearLayout>
-     </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-   </LinearLayout>
+    </LinearLayout>
    <LinearLayout android:id="@+id/searchContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:visibility="gone">
     <EditText android:id="@+id/searchSongs" android:layout_width="match_parent" android:layout_height="58dp" android:hint="⌕  Search songs or artists online" android:singleLine="true" android:textColor="#111111" android:textColorHint="#555555" android:background="#FFFFFF" android:padding="12dp"/>
     <Button android:id="@+id/onlineSearchButton" android:layout_width="match_parent" android:layout_height="50dp" android:layout_marginTop="12dp" android:text="Search online music" android:textAllCaps="false" style="@style/Widget.Orbit.PrimaryButton"/>
