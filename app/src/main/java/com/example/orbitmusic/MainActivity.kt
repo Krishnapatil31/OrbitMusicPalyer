@@ -30,10 +30,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
-import com.spotify.android.appremote.api.ConnectionParams
-import com.spotify.android.appremote.api.Connector
-import com.spotify.android.appremote.api.SpotifyAppRemote
-import com.spotify.protocol.types.PlayerState
 
 data class RemoteTrack(val id: String, val title: String, val artist: String)
 data class LocalSong(val id: Long, val title: String, val artist: String, val uri: Uri) {
@@ -41,11 +37,6 @@ data class LocalSong(val id: Long, val title: String, val artist: String, val ur
 }
 
 class MainActivity : AppCompatActivity() {
-    // Client ID is public app configuration; never put a client secret or access token here.
-    private val spotifyClientId = BuildConfig.SPOTIFY_CLIENT_ID
-    private val redirectUri = "orbitmusic://callback"
-    private var spotifyRemote: SpotifyAppRemote? = null
-    private var spotifyIsPaused = true
     private val songs = mutableListOf<LocalSong>()
     private val visibleSongs = mutableListOf<LocalSong>()
     private lateinit var songAdapter: ArrayAdapter<LocalSong>
@@ -53,7 +44,6 @@ class MainActivity : AppCompatActivity() {
     private val networkExecutor = Executors.newSingleThreadExecutor()
     private val mainHandler = Handler(Looper.getMainLooper())
     private var localPlayer: ExoPlayer? = null
-    private lateinit var spotifyStatus: TextView
     private lateinit var localStatus: TextView
     private lateinit var currentSong: TextView
 
@@ -64,11 +54,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setupNavigation()
         findViewById<View>(R.id.continueGuest).setOnClickListener { enterOrbit("Guest listener") }
-        findViewById<Button>(R.id.loginSpotify).setOnClickListener { connectSpotify() }
         findViewById<Button>(R.id.loginGoogle).setOnClickListener { toast("Google sign-in needs Firebase project configuration before it can be enabled.") }
         findViewById<Button>(R.id.loginEmail).setOnClickListener { toast("Email login needs secure account authentication setup. It is not enabled yet.") }
         findViewById<Button>(R.id.signupEmail).setOnClickListener { toast("Email signup needs secure account authentication setup. It is not enabled yet.") }
-        spotifyStatus = findViewById(R.id.spotifyStatus)
         localStatus = findViewById(R.id.localStatus)
         currentSong = findViewById(R.id.currentSong)
         localPlayer = ExoPlayer.Builder(this).build()
@@ -83,19 +71,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        findViewById<Button>(R.id.spotifyConnect).setOnClickListener { connectSpotify() }
-        findViewById<Button>(R.id.openPlaylist).setOnClickListener { playSpotifyPlaylist() }
-        findViewById<Button>(R.id.spotifyToggle).setOnClickListener {
-            val remote = spotifyRemote
-            if (remote == null) toast("Connect to Spotify first")
-            else if (spotifyIsPaused) remote.playerApi.resume() else remote.playerApi.pause()
-        }
-        findViewById<Button>(R.id.spotifyNext).setOnClickListener {
-            spotifyRemote?.playerApi?.skipNext() ?: toast("Connect to Spotify first")
-        }
-        findViewById<Button>(R.id.spotifyPrevious).setOnClickListener {
-            spotifyRemote?.playerApi?.skipPrevious() ?: toast("Connect to Spotify first")
-        }
         findViewById<Button>(R.id.scanMusic).setOnClickListener { checkAudioPermissionAndLoad() }
         findViewById<Button>(R.id.onlineSearchButton).setOnClickListener { searchOnlineSongs() }
         findViewById<Button>(R.id.localToggle).setOnClickListener {
@@ -203,65 +178,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun connectSpotify() {
-        if (spotifyClientId.isBlank() || spotifyClientId == "YOUR_SPOTIFY_CLIENT_ID") {
-            toast("Spotify Client ID is missing. Add the SPOTIFY_CLIENT_ID GitHub Actions secret.")
-            return
-        }
-        val params = ConnectionParams.Builder(spotifyClientId)
-            .setRedirectUri(redirectUri).showAuthView(true).build()
-        SpotifyAppRemote.connect(this, params, object : Connector.ConnectionListener {
-            override fun onConnected(appRemote: SpotifyAppRemote) {
-                spotifyRemote = appRemote
-                enterOrbit("Spotify listener")
-                spotifyStatus.text = "Connected to Spotify"
-                appRemote.playerApi.subscribeToPlayerState()
-                    .setEventCallback { state: PlayerState ->
-                        spotifyIsPaused = state.isPaused
-                        val track = state.track
-                        spotifyStatus.text = if (track != null)
-                            "Spotify: ${track.name} — ${track.artist.name}" else "Connected to Spotify"
-                    }
-                    .setErrorCallback { spotifyStatus.text = "Player state error" }
-            }
-            override fun onFailure(throwable: Throwable) {
-                val message = friendlySpotifyError(throwable)
-                spotifyStatus.text = message
-                toast(message)
-            }
-        })
-    }
-
-    private fun friendlySpotifyError(error: Throwable): String {
-        val detail = (error.message.orEmpty() + " " + error.javaClass.simpleName).lowercase()
-        return when {
-            detail.contains("authorization") || detail.contains("not authorized") ->
-                "Spotify permission needed. Open Spotify, sign in, then tap Connect Spotify and allow access."
-            detail.contains("not installed") || detail.contains("package") ->
-                "Please install or update the Spotify app, then try again."
-            detail.contains("network") || detail.contains("timeout") ->
-                "Connection problem. Check your internet and try again."
-            else -> "Couldn't connect to Spotify. Check the Spotify app settings and try again."
-        }
-    }
-
-    private fun playSpotifyPlaylist() {
-        val input = findViewById<EditText>(R.id.playlistUrl).text.toString().trim()
-        val playlistUri = parseSpotifyPlaylistUri(input)
-        if (playlistUri == null) { toast("Paste a valid Spotify playlist URL or URI"); return }
-        val remote = spotifyRemote
-        if (remote == null) { toast("Connect to Spotify first"); return }
-        remote.playerApi.play(playlistUri)
-            .setResultCallback { toast("Opening playlist in Spotify") }
-            .setErrorCallback { toast("Could not play playlist") }
-    }
-
-    private fun parseSpotifyPlaylistUri(input: String): String? {
-        val regex = Regex("(?:open\\.spotify\\.com/playlist/|spotify:playlist:)([A-Za-z0-9]+)")
-        val id = regex.find(input)?.groupValues?.getOrNull(1) ?: return null
-        return "spotify:playlist:$id"
-    }
-
     private fun checkAudioPermissionAndLoad() {
         val permission = if (Build.VERSION.SDK_INT >= 33) Manifest.permission.READ_MEDIA_AUDIO
             else Manifest.permission.READ_EXTERNAL_STORAGE
@@ -341,8 +257,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        spotifyRemote?.let { SpotifyAppRemote.disconnect(it) }
-        spotifyRemote = null
     }
 
     override fun onDestroy() {
