@@ -10,6 +10,9 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.webkit.URLUtil
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import android.content.Intent
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -73,6 +76,8 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.scanMusic).setOnClickListener { checkAudioPermissionAndLoad() }
         findViewById<Button>(R.id.onlineSearchButton).setOnClickListener { searchOnlineSongs() }
+        findViewById<Button>(R.id.importPlaylistButton).setOnClickListener { importPlaylistByUrl() }
+        renderSavedPlaylists()
         findViewById<Button>(R.id.localToggle).setOnClickListener {
             val player = localPlayer ?: return@setOnClickListener
             if (player.isPlaying) player.pause() else player.play()
@@ -116,6 +121,71 @@ class MainActivity : AppCompatActivity() {
             findViewById<TextView>(id).setTextColor(if (id == active) 0xFFFFFFFF.toInt() else 0xFFB3B3B3.toInt())
         }
         findViewById<android.widget.ScrollView>(R.id.mainScroll).smoothScrollTo(0, 0)
+    }
+
+    private fun importPlaylistByUrl() {
+        val raw = findViewById<EditText>(R.id.playlistUrlInput).text.toString().trim()
+        val uri = try { Uri.parse(raw) } catch (_: Exception) { null }
+        if (uri == null || (uri.scheme != "https" && uri.scheme != "http") || uri.host.isNullOrBlank()) {
+            toast("Paste a valid public playlist URL")
+            return
+        }
+        val prefs = getSharedPreferences("orbit_playlists", MODE_PRIVATE)
+        val saved = prefs.getStringSet("urls", emptySet())?.toMutableSet() ?: mutableSetOf()
+        if (!saved.add(uri.toString())) { toast("Playlist already saved"); return }
+        prefs.edit().putStringSet("urls", saved).apply()
+        findViewById<EditText>(R.id.playlistUrlInput).text.clear()
+        renderSavedPlaylists()
+        toast("Playlist link saved in Orbit")
+    }
+
+    private fun renderSavedPlaylists() {
+        val container = findViewById<LinearLayout>(R.id.savedPlaylists)
+        container.removeAllViews()
+        val urls = getSharedPreferences("orbit_playlists", MODE_PRIVATE).getStringSet("urls", emptySet())?.toList()?.sorted() ?: emptyList()
+        if (urls.isEmpty()) {
+            container.addView(TextView(this).apply { text = "No playlists saved yet"; setTextColor(0xFFB3B3B3.toInt()); setPadding(8, 14, 8, 14) })
+            return
+        }
+        urls.forEach { link ->
+            val row = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; gravity = android.view.Gravity.CENTER_VERTICAL; setPadding(4, 8, 4, 8) }
+            val label = TextView(this).apply {
+                text = Uri.parse(link).host ?: "Saved playlist"
+                setTextColor(0xFFFFFFFF.toInt()); textSize = 14f
+                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+            }
+            val play = Button(this).apply { text = "OPEN"; setOnClickListener { openImportedPlaylist(link) } }
+            row.addView(label); row.addView(play); container.addView(row)
+        }
+    }
+
+    private fun openImportedPlaylist(link: String) {
+        val uri = Uri.parse(link)
+        val host = uri.host?.lowercase() ?: ""
+        val embed = when {
+            host.contains("youtube.com") || host.contains("music.youtube.com") -> {
+                val listId = uri.getQueryParameter("list")
+                if (listId.isNullOrBlank()) null else "https://www.youtube-nocookie.com/embed/videoseries?list=" + Uri.encode(listId)
+            }
+            host == "youtu.be" -> null
+            host == "open.spotify.com" -> {
+                val match = Regex("/playlist/([A-Za-z0-9]+)").find(uri.path ?: "")
+                match?.groupValues?.getOrNull(1)?.let { "https://open.spotify.com/embed/playlist/$it" }
+            }
+            else -> null
+        }
+        if (embed != null) {
+            val web = findViewById<WebView>(R.id.playlistWebView)
+            web.visibility = View.VISIBLE
+            web.webViewClient = WebViewClient()
+            web.settings.javaScriptEnabled = true
+            web.settings.domStorageEnabled = true
+            web.loadUrl(embed)
+            toast("Opening playlist player")
+        } else {
+            try { startActivity(Intent(Intent.ACTION_VIEW, uri)) }
+            catch (_: Exception) { toast("Could not open this playlist link") }
+        }
     }
 
     private fun searchOnlineSongs() {
