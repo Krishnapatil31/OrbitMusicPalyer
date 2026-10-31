@@ -90,13 +90,13 @@
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Profile and account" android:textColor="#B3B3B3" android:textSize="14sp" android:paddingTop="5dp"/>
     <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" app:cardBackgroundColor="#292929" app:cardCornerRadius="18dp" app:strokeWidth="0dp">
      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
-      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="O" android:gravity="center" android:background="#4A3974" android:textColor="#FFFFFF" android:textSize="28sp" android:textStyle="bold" android:layout_width="64dp" android:layout_height="64dp"/>
+      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="O" android:gravity="center" android:background="#4A3974" android:textColor="#FFFFFF" android:textSize="28sp" android:textStyle="bold"/>
       <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Orbit listener" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold" android:paddingTop="12dp"/>
       <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your profile details will appear here after account setup." android:textColor="#B3B3B3" android:paddingTop="4dp"/>
      </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Recents" android:textColor="#FFFFFF" android:textSize="18sp" android:paddingTop="26dp" android:paddingBottom="17dp"/>
-    <TextView android:id="@+id/settingsButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="⚙   Settings and privacy\n      Account · Playback · Notifications" android:textColor="#FFFFFF" android:textSize="17sp" android:padding="16dp" android:background="#242424"/>
+    <TextView android:id="@+id/profileSettings" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="⚙   Settings and privacy\n      Account · Playback · Notifications" android:textColor="#FFFFFF" android:textSize="17sp" android:padding="16dp" android:background="#242424"/>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Orbit Music · Personal music space" android:textColor="#888888" android:textSize="12sp" android:gravity="center" android:paddingTop="30dp"/>
    </LinearLayout>
   </LinearLayout>
