@@ -52,6 +52,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupNavigation()
+        findViewById<View>(R.id.continueGuest).setOnClickListener { enterOrbit("Guest listener") }
+        findViewById<Button>(R.id.loginSpotify).setOnClickListener { connectSpotify() }
+        findViewById<Button>(R.id.loginGoogle).setOnClickListener { toast("Google sign-in needs Firebase project configuration before it can be enabled.") }
+        findViewById<Button>(R.id.loginEmail).setOnClickListener { toast("Email login needs secure account authentication setup. It is not enabled yet.") }
+        findViewById<Button>(R.id.signupEmail).setOnClickListener { toast("Email signup needs secure account authentication setup. It is not enabled yet.") }
         spotifyStatus = findViewById(R.id.spotifyStatus)
         localStatus = findViewById(R.id.localStatus)
         currentSong = findViewById(R.id.currentSong)
@@ -91,6 +96,14 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.downloadAudio).setOnClickListener { downloadDirectAudio() }
     }
 
+    private fun enterOrbit(accountLabel: String) {
+        findViewById<View>(R.id.authScreen).visibility = View.GONE
+        findViewById<View>(R.id.mainScroll).visibility = View.VISIBLE
+        findViewById<View>(R.id.bottomNavigation).visibility = View.VISIBLE
+        findViewById<TextView>(R.id.pageTitle).text = "Good evening"
+        toast("Welcome to Orbit Music · $accountLabel")
+    }
+
     private fun setupNavigation() {
         findViewById<View>(R.id.navHome).setOnClickListener { showPage("Home") }
         findViewById<View>(R.id.navSearch).setOnClickListener { showPage("Search") }
@@ -128,6 +141,7 @@ class MainActivity : AppCompatActivity() {
         SpotifyAppRemote.connect(this, params, object : Connector.ConnectionListener {
             override fun onConnected(appRemote: SpotifyAppRemote) {
                 spotifyRemote = appRemote
+                enterOrbit("Spotify listener")
                 spotifyStatus.text = "Connected to Spotify"
                 appRemote.playerApi.subscribeToPlayerState()
                     .setEventCallback { state: PlayerState ->
