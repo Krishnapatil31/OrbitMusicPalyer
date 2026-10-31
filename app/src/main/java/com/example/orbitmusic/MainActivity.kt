@@ -14,6 +14,14 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
+import android.widget.LinearLayout
+import android.os.Handler
+import android.os.Looper
+import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
+import java.net.URLEncoder
+import java.util.concurrent.Executors
 import android.widget.TextView
 import android.widget.Toast
 import android.view.View
@@ -27,6 +35,7 @@ import com.spotify.android.appremote.api.Connector
 import com.spotify.android.appremote.api.SpotifyAppRemote
 import com.spotify.protocol.types.PlayerState
 
+data class RemoteTrack(val id: String, val title: String, val artist: String)
 data class LocalSong(val id: Long, val title: String, val artist: String, val uri: Uri) {
     override fun toString(): String = "$title  •  $artist"
 }
@@ -41,6 +50,8 @@ class MainActivity : AppCompatActivity() {
     private val visibleSongs = mutableListOf<LocalSong>()
     private lateinit var songAdapter: ArrayAdapter<LocalSong>
     private var currentIndex = -1
+    private val networkExecutor = Executors.newSingleThreadExecutor()
+    private val mainHandler = Handler(Looper.getMainLooper())
     private var localPlayer: ExoPlayer? = null
     private lateinit var spotifyStatus: TextView
     private lateinit var localStatus: TextView
@@ -86,7 +97,7 @@ class MainActivity : AppCompatActivity() {
             spotifyRemote?.playerApi?.skipPrevious() ?: toast("Connect to Spotify first")
         }
         findViewById<Button>(R.id.scanMusic).setOnClickListener { checkAudioPermissionAndLoad() }
-        findViewById<EditText>(R.id.searchSongs).addTextChangedListener(SimpleTextWatcher { filterSongs(it) })
+        findViewById<Button>(R.id.onlineSearchButton).setOnClickListener { searchOnlineSongs() }
         findViewById<Button>(R.id.localToggle).setOnClickListener {
             val player = localPlayer ?: return@setOnClickListener
             if (player.isPlaying) player.pause() else player.play()
@@ -131,6 +142,67 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<android.widget.ScrollView>(R.id.mainScroll).smoothScrollTo(0, 0)
     }
+
+    private fun searchOnlineSongs() {
+        val query = findViewById<EditText>(R.id.searchSongs).text.toString().trim()
+        if (query.length < 2) { toast("Type at least 2 letters to search online music"); return }
+        val resultsView = findViewById<LinearLayout>(R.id.onlineResults)
+        resultsView.removeAllViews()
+        resultsView.addView(TextView(this).apply { text = "Searching Audius…"; setTextColor(0xFFB3B3B3.toInt()); setPadding(8, 18, 8, 18) })
+        networkExecutor.execute {
+            try {
+                val encoded = URLEncoder.encode(query, "UTF-8")
+                val connection = URL("https://api.audius.co/v1/tracks/search?query=$encoded&limit=25").openConnection() as HttpURLConnection
+                connection.connectTimeout = 15000
+                connection.readTimeout = 20000
+                connection.setRequestProperty("Accept", "application/json")
+                val response = connection.inputStream.bufferedReader().use { it.readText() }
+                connection.disconnect()
+                val data = JSONObject(response).optJSONArray("data") ?: org.json.JSONArray()
+                val tracks = (0 until data.length()).mapNotNull { index ->
+                    val item = data.optJSONObject(index) ?: return@mapNotNull null
+                    val id = item.optString("id")
+                    if (id.isBlank() || id == "null") return@mapNotNull null
+                    val artist = item.optJSONObject("user")?.optString("name") ?: "Unknown artist"
+                    RemoteTrack(id, item.optString("title", "Unknown track"), artist)
+                }
+                mainHandler.post {
+                    resultsView.removeAllViews()
+                    if (tracks.isEmpty()) {
+                        resultsView.addView(TextView(this).apply { text = "No tracks found. Try another search."; setTextColor(0xFFB3B3B3.toInt()); setPadding(8, 18, 8, 18) })
+                    } else tracks.forEach { track ->
+                        val row = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; gravity = android.view.Gravity.CENTER_VERTICAL; setPadding(8, 12, 8, 12) }
+                        val label = TextView(this).apply {
+                            text = "${track.title}\n${track.artist}"
+                            setTextColor(0xFFFFFFFF.toInt()); textSize = 15f
+                            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+                        }
+                        val play = Button(this).apply {
+                            text = "PLAY"
+                            setOnClickListener {
+                                val stream = "https://api.audius.co/v1/tracks/${track.id}/stream"
+                                localPlayer?.setMediaItem(MediaItem.fromUri(stream))
+                                localPlayer?.prepare()
+                                localPlayer?.play()
+                                currentSong.text = "${track.title} — ${track.artist}"
+                                toast("Playing from Audius")
+                            }
+                        }
+                        row.addView(label); row.addView(play)
+                        resultsView.addView(row)
+                        resultsView.addView(View(this).apply { setBackgroundColor(0xFF333333.toInt()) },
+                            LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1))
+                    }
+                }
+            } catch (error: Exception) {
+                mainHandler.post {
+                    resultsView.removeAllViews()
+                    resultsView.addView(TextView(this).apply { text = "Online search failed. Check internet and try again."; setTextColor(0xFFFF8A80.toInt()); setPadding(8, 18, 8, 18) })
+                }
+            }
+        }
+    }
+
     private fun connectSpotify() {
         if (spotifyClientId.isBlank() || spotifyClientId == "YOUR_SPOTIFY_CLIENT_ID") {
             toast("Spotify Client ID is missing. Add the SPOTIFY_CLIENT_ID GitHub Actions secret.")
@@ -274,6 +346,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        networkExecutor.shutdownNow()
         localPlayer?.release()
         localPlayer = null
         super.onDestroy()
