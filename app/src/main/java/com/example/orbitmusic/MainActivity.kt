@@ -16,6 +16,7 @@ import android.widget.EditText
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupNavigation()
         spotifyStatus = findViewById(R.id.spotifyStatus)
         localStatus = findViewById(R.id.localStatus)
         currentSong = findViewById(R.id.currentSong)
@@ -89,6 +91,33 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.downloadAudio).setOnClickListener { downloadDirectAudio() }
     }
 
+    private fun setupNavigation() {
+        findViewById<View>(R.id.navHome).setOnClickListener { showPage("Home") }
+        findViewById<View>(R.id.navSearch).setOnClickListener { showPage("Search") }
+        findViewById<View>(R.id.navLibrary).setOnClickListener { showPage("Your Library") }
+        findViewById<View>(R.id.navProfile).setOnClickListener { showPage("Profile") }
+        findViewById<View>(R.id.profileButton).setOnClickListener { showPage("Profile") }
+        findViewById<View>(R.id.settingsButton).setOnClickListener { showPage("Profile") }
+        findViewById<View>(R.id.navPremium).setOnClickListener { toast("Orbit Premium plans are not configured yet.") }
+    }
+
+    private fun showPage(page: String) {
+        findViewById<View>(R.id.homeContent).visibility = if (page == "Home") View.VISIBLE else View.GONE
+        findViewById<View>(R.id.searchContent).visibility = if (page == "Search") View.VISIBLE else View.GONE
+        findViewById<View>(R.id.libraryContent).visibility = if (page == "Your Library") View.VISIBLE else View.GONE
+        findViewById<View>(R.id.profileContent).visibility = if (page == "Profile") View.VISIBLE else View.GONE
+        findViewById<TextView>(R.id.pageTitle).text = if (page == "Home") "Good evening" else page
+        val active = when (page) {
+            "Home" -> R.id.navHome
+            "Search" -> R.id.navSearch
+            "Your Library" -> R.id.navLibrary
+            else -> R.id.navProfile
+        }
+        listOf(R.id.navHome, R.id.navSearch, R.id.navLibrary, R.id.navPremium, R.id.navProfile).forEach { id ->
+            findViewById<TextView>(id).setTextColor(if (id == active) 0xFFFFFFFF.toInt() else 0xFFB3B3B3.toInt())
+        }
+        findViewById<android.widget.ScrollView>(R.id.mainScroll).smoothScrollTo(0, 0)
+    }
     private fun connectSpotify() {
         if (spotifyClientId.isBlank() || spotifyClientId == "YOUR_SPOTIFY_CLIENT_ID") {
             toast("Spotify Client ID is missing. Add the SPOTIFY_CLIENT_ID GitHub Actions secret.")
