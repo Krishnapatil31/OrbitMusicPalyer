@@ -2,26 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
  android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#121212">
  <ScrollView android:id="@+id/mainScroll" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
-  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="10dp">
-   <LinearLayout android:layout_width="match_parent" android:layout_height="64dp" android:gravity="center_vertical" android:paddingHorizontal="18dp">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="12dp">
+   <LinearLayout android:layout_width="match_parent" android:layout_height="70dp" android:gravity="center_vertical" android:paddingHorizontal="18dp">
     <TextView android:id="@+id/profileButton" android:layout_width="42dp" android:layout_height="42dp" android:gravity="center" android:background="@drawable/ic_orbit_launcher" android:text="O" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="20sp"/>
     <TextView android:id="@+id/pageTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:paddingStart="14dp" android:text="Good evening" android:textColor="#FFFFFF" android:textSize="27sp" android:textStyle="bold"/>
-    <TextView android:id="@+id/settingsButton" android:layout_width="42dp" android:layout_height="42dp" android:gravity="center" android:text="⚙" android:textColor="#FFFFFF" android:textSize="26sp"/>
+    <TextView android:id="@+id/settingsButton" android:layout_width="42dp" android:layout_height="42dp" android:gravity="center" android:text="⚙" android:textColor="#FFFFFF" android:textSize="25sp"/>
    </LinearLayout>
    <LinearLayout android:id="@+id/homeContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="18dp">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="2">
-     <TextView android:layout_width="0dp" android:layout_height="72dp" android:layout_weight="1" android:layout_margin="4dp" android:gravity="center_vertical" android:padding="12dp" android:background="#315B8E" android:text="♫  Liked Songs" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="15sp"/>
-     <TextView android:layout_width="0dp" android:layout_height="72dp" android:layout_weight="1" android:layout_margin="4dp" android:gravity="center_vertical" android:padding="12dp" android:background="#5A315F" android:text="Your Playlists" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="15sp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+     <TextView android:layout_width="0dp" android:layout_height="76dp" android:layout_weight="1" android:layout_margin="4dp" android:gravity="center_vertical" android:padding="12dp" android:background="#343434" android:text="♥  Liked Songs" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="15sp"/>
+     <TextView android:layout_width="0dp" android:layout_height="76dp" android:layout_weight="1" android:layout_margin="4dp" android:gravity="center_vertical" android:padding="12dp" android:background="#343434" android:text="♫  Your Playlists" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="15sp"/>
     </LinearLayout>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Made for you" android:textColor="#FFFFFF" android:textSize="23sp" android:textStyle="bold" android:paddingTop="22dp" android:paddingBottom="12dp"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Made for you" android:textColor="#FFFFFF" android:textSize="23sp" android:textStyle="bold" android:paddingTop="26dp" android:paddingBottom="13dp"/>
     <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none">
      <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
-      <LinearLayout android:layout_width="156dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginEnd="12dp">
+      <LinearLayout android:layout_width="156dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginEnd="13dp">
        <TextView android:layout_width="156dp" android:layout_height="156dp" android:gravity="center" android:background="#263B5A" android:text="♫" android:textColor="#B9D9FF" android:textSize="56sp"/>
        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Daily Mix 01" android:textColor="#FFFFFF" android:textStyle="bold" android:paddingTop="8dp"/>
        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your favourite artists" android:textColor="#B3B3B3" android:textSize="12sp"/>
       </LinearLayout>
-      <LinearLayout android:layout_width="156dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginEnd="12dp">
+      <LinearLayout android:layout_width="156dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginEnd="13dp">
        <TextView android:layout_width="156dp" android:layout_height="156dp" android:gravity="center" android:background="#49364D" android:text="♫" android:textColor="#F2C8FF" android:textSize="56sp"/>
        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Daily Mix 02" android:textColor="#FFFFFF" android:textStyle="bold" android:paddingTop="8dp"/>
        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Discover more music" android:textColor="#B3B3B3" android:textSize="12sp"/>
@@ -33,12 +33,15 @@
       </LinearLayout>
      </LinearLayout>
     </HorizontalScrollView>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Recently played" android:textColor="#FFFFFF" android:textSize="23sp" android:textStyle="bold" android:paddingTop="26dp" android:paddingBottom="12dp"/>
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-     <TextView android:layout_width="0dp" android:layout_height="70dp" android:layout_weight="1" android:layout_margin="3dp" android:gravity="center" android:background="#292929" android:text="♫  Your Mix" android:textColor="#FFFFFF"/>
-     <TextView android:layout_width="0dp" android:layout_height="70dp" android:layout_weight="1" android:layout_margin="3dp" android:gravity="center" android:background="#292929" android:text="♫  Favourite" android:textColor="#FFFFFF"/>
-    </LinearLayout>
-    <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="22dp" app:cardBackgroundColor="#242424" app:cardCornerRadius="18dp" app:strokeWidth="0dp">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New releases for you" android:textColor="#FFFFFF" android:textSize="23sp" android:textStyle="bold" android:paddingTop="28dp" android:paddingBottom="13dp"/>
+    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none">
+     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+      <TextView android:layout_width="145dp" android:layout_height="145dp" android:layout_marginEnd="12dp" android:gravity="center" android:background="#713E55" android:text="NEW\nRELEASE" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="18sp"/>
+      <TextView android:layout_width="145dp" android:layout_height="145dp" android:layout_marginEnd="12dp" android:gravity="center" android:background="#254F67" android:text="FRESH\nMIX" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="18sp"/>
+      <TextView android:layout_width="145dp" android:layout_height="145dp" android:gravity="center" android:background="#51416F" android:text="TOP\nHITS" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="18sp"/>
+     </LinearLayout>
+    </HorizontalScrollView>
+    <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" app:cardBackgroundColor="#242424" app:cardCornerRadius="18dp" app:strokeWidth="0dp">
      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
       <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Connect your Spotify" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="18sp"/>
       <TextView android:id="@+id/spotifyStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Spotify is not connected" android:textColor="#B3B3B3" android:paddingTop="5dp"/>
@@ -54,15 +57,20 @@
     </com.google.android.material.card.MaterialCardView>
    </LinearLayout>
    <LinearLayout android:id="@+id/searchContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:visibility="gone">
-    <EditText android:id="@+id/searchSongs" android:layout_width="match_parent" android:layout_height="58dp" android:hint="⌕  What do you want to listen to?" android:singleLine="true" android:textColor="#111111" android:textColorHint="#555555" android:backgroundTint="#FFFFFF" android:padding="12dp"/>
+    <EditText android:id="@+id/searchSongs" android:layout_width="match_parent" android:layout_height="58dp" android:hint="⌕  What do you want to listen to?" android:singleLine="true" android:textColor="#111111" android:textColorHint="#555555" android:background="#FFFFFF" android:padding="12dp"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Browse all" android:textColor="#FFFFFF" android:textSize="23sp" android:textStyle="bold" android:paddingTop="24dp" android:paddingBottom="14dp"/>
-    <TextView android:layout_width="match_parent" android:layout_height="112dp" android:gravity="top" android:padding="16dp" android:background="#D4148E" android:text="Music" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
-    <TextView android:layout_width="match_parent" android:layout_height="112dp" android:layout_marginTop="12dp" android:gravity="top" android:padding="16dp" android:background="#006B58" android:text="Podcasts" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
-    <TextView android:layout_width="match_parent" android:layout_height="112dp" android:layout_marginTop="12dp" android:gravity="top" android:padding="16dp" android:background="#7900D8" android:text="Live Events" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
-    <TextView android:layout_width="match_parent" android:layout_height="112dp" android:layout_marginTop="12dp" android:gravity="top" android:padding="16dp" android:background="#203967" android:text="Home of I-Pop" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+     <TextView android:layout_width="0dp" android:layout_height="112dp" android:layout_weight="1" android:layout_margin="4dp" android:gravity="top" android:padding="15dp" android:background="#D4148E" android:text="Music" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+     <TextView android:layout_width="0dp" android:layout_height="112dp" android:layout_weight="1" android:layout_margin="4dp" android:gravity="top" android:padding="15dp" android:background="#006B58" android:text="Podcasts" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+     <TextView android:layout_width="0dp" android:layout_height="112dp" android:layout_weight="1" android:layout_margin="4dp" android:gravity="top" android:padding="15dp" android:background="#7900D8" android:text="Live Events" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+     <TextView android:layout_width="0dp" android:layout_height="112dp" android:layout_weight="1" android:layout_margin="4dp" android:gravity="top" android:padding="15dp" android:background="#203967" android:text="Home of I-Pop" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+    </LinearLayout>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:padding="16dp" android:background="#785C91" android:text="Made For You" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
    </LinearLayout>
    <LinearLayout android:id="@+id/libraryContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:visibility="gone">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
      <Button android:id="@+id/scanMusic" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:text="＋ Add music" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton"/>
      <Button android:id="@+id/downloadAudio" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:text="Download" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton"/>
     </LinearLayout>
@@ -79,17 +87,25 @@
    </LinearLayout>
    <LinearLayout android:id="@+id/profileContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="22dp" android:visibility="gone">
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your Orbit profile" android:textColor="#FFFFFF" android:textSize="25sp" android:textStyle="bold"/>
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="View profile  •  Add account" android:textColor="#B3B3B3" android:textSize="16sp" android:paddingTop="16dp"/>
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Recents\n\nYour Updates\n\nSettings and privacy" android:textColor="#FFFFFF" android:textSize="18sp" android:paddingTop="26dp"/>
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Account  •  Content and display  •  Privacy and social  •  Playback  •  Notifications  •  Apps and devices  •  Data-saving and offline  •  Media quality  •  About and support" android:textColor="#B3B3B3" android:lineSpacingExtra="9dp" android:paddingTop="24dp"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Profile and account" android:textColor="#B3B3B3" android:textSize="14sp" android:paddingTop="5dp"/>
+    <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" app:cardBackgroundColor="#292929" app:cardCornerRadius="18dp" app:strokeWidth="0dp">
+     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="O" android:gravity="center" android:background="#4A3974" android:textColor="#FFFFFF" android:textSize="28sp" android:textStyle="bold" android:layout_width="64dp" android:layout_height="64dp"/>
+      <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Orbit listener" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold" android:paddingTop="12dp"/>
+      <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your profile details will appear here after account setup." android:textColor="#B3B3B3" android:paddingTop="4dp"/>
+     </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Recents" android:textColor="#FFFFFF" android:textSize="18sp" android:paddingTop="26dp" android:paddingBottom="17dp"/>
+    <TextView android:id="@+id/settingsButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="⚙   Settings and privacy\n      Account · Playback · Notifications" android:textColor="#FFFFFF" android:textSize="17sp" android:padding="16dp" android:background="#242424"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Orbit Music · Personal music space" android:textColor="#888888" android:textSize="12sp" android:gravity="center" android:paddingTop="30dp"/>
    </LinearLayout>
   </LinearLayout>
  </ScrollView>
- <LinearLayout android:layout_width="match_parent" android:layout_height="64dp" android:orientation="horizontal" android:gravity="center" android:background="#080808">
+ <LinearLayout android:layout_width="match_parent" android:layout_height="66dp" android:orientation="horizontal" android:gravity="center" android:background="#080808">
   <TextView android:id="@+id/navHome" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="⌂\nHome" android:textColor="#FFFFFF" android:textSize="13sp"/>
   <TextView android:id="@+id/navSearch" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="⌕\nSearch" android:textColor="#B3B3B3" android:textSize="13sp"/>
-  <TextView android:id="@+id/navLibrary" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="▥\nLibrary" android:textColor="#B3B3B3" android:textSize="13sp"/>
-  <TextView android:id="@+id/navPremium" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="◉\nPremium" android:textColor="#B3B3B3" android:textSize="13sp"/>
-  <TextView android:id="@+id/navProfile" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="☻\nProfile" android:textColor="#B3B3B3" android:textSize="13sp"/>
+  <TextView android:id="@+id/navLibrary" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="▥\nYour Library" android:textColor="#B3B3B3" android:textSize="12sp"/>
+  <TextView android:id="@+id/navPremium" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="◉\nPremium" android:textColor="#B3B3B3" android:textSize="12sp"/>
+  <TextView android:id="@+id/navProfile" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="☻\nProfile" android:textColor="#B3B3B3" android:textSize="12sp"/>
  </LinearLayout>
 </LinearLayout>
