@@ -1,43 +1,95 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#090D18" android:fillViewport="true">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:paddingTop="12dp" android:paddingBottom="20dp">
-<TextView android:layout_width="48dp" android:layout_height="48dp" android:gravity="center" android:text="◉" android:textColor="#FFFFFF" android:textSize="30sp" android:background="@drawable/ic_orbit_launcher"/>
-<LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingStart="12dp">
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ORBIT MUSIC" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="23sp"/>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="YOUR MUSIC. YOUR UNIVERSE." android:textColor="#8994AD" android:textSize="10sp" android:letterSpacing="0.12"/></LinearLayout>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="♪" android:textColor="#8B7CFF" android:textSize="28sp"/></LinearLayout>
-<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#151C2D" app:cardCornerRadius="22dp" app:strokeColor="#29334B" app:strokeWidth="1dp" app:cardElevation="0dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SPOTIFY CONNECT" android:textColor="#A9B4CC" android:textStyle="bold" android:textSize="12sp"/>
-<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Listen without limits." android:textColor="#FFFFFF" android:textSize="21sp" android:textStyle="bold" android:layout_marginTop="7dp"/>
-<TextView android:id="@+id/spotifyStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Spotify is not connected" android:textColor="#AAB5CC" android:textSize="13sp" android:paddingTop="5dp" android:paddingBottom="10dp"/>
-<Button android:id="@+id/spotifyConnect" android:layout_width="match_parent" android:layout_height="50dp" android:text="Connect Spotify" android:textAllCaps="false" style="@style/Widget.Orbit.PrimaryButton"/>
-<EditText android:id="@+id/playlistUrl" android:layout_width="match_parent" android:layout_height="52dp" android:hint="Paste Spotify playlist link" android:inputType="textUri" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#7F8AA3" android:paddingStart="14dp" android:background="@drawable/orbit_input" android:layout_marginTop="12dp"/>
-<Button android:id="@+id/openPlaylist" android:layout_width="match_parent" android:layout_height="48dp" android:text="Play playlist" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton"/>
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
-<Button android:id="@+id/spotifyPrevious" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:text="|◀" android:textAllCaps="false" style="@style/Widget.Orbit.GhostButton"/>
-<Button android:id="@+id/spotifyToggle" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:text="▶ / ❚❚" android:textAllCaps="false" style="@style/Widget.Orbit.GhostButton"/>
-<Button android:id="@+id/spotifyNext" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:text="▶|" android:textAllCaps="false" style="@style/Widget.Orbit.GhostButton"/></LinearLayout></LinearLayout></com.google.android.material.card.MaterialCardView>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="YOUR LIBRARY" android:textColor="#FFFFFF" android:textSize="17sp" android:textStyle="bold" android:paddingTop="24dp" android:paddingBottom="10dp"/>
-<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#151C2D" app:cardCornerRadius="22dp" app:strokeColor="#29334B" app:strokeWidth="1dp" app:cardElevation="0dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-<Button android:id="@+id/scanMusic" android:layout_width="match_parent" android:layout_height="48dp" android:text="＋  Scan phone for music" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton"/>
-<EditText android:id="@+id/searchSongs" android:layout_width="match_parent" android:layout_height="50dp" android:hint="⌕  Search your songs" android:inputType="text" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#7F8AA3" android:paddingStart="14dp" android:background="@drawable/orbit_input" android:layout_marginTop="12dp"/>
-<TextView android:id="@+id/localStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your songs will appear here" android:textColor="#98A4BD" android:textSize="12sp" android:paddingTop="12dp" android:paddingBottom="8dp"/>
-<ListView android:id="@+id/songList" android:layout_width="match_parent" android:layout_height="260dp" android:divider="#29334B" android:dividerHeight="1dp" android:background="#111827" android:padding="6dp"/></LinearLayout></com.google.android.material.card.MaterialCardView>
-<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#201D3A" app:cardCornerRadius="22dp" app:strokeColor="#40396D" app:strokeWidth="1dp" app:cardElevation="0dp" android:layout_marginTop="16dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NOW PLAYING" android:textColor="#B9AEFF" android:textSize="11sp" android:textStyle="bold"/>
-<TextView android:id="@+id/currentSong" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Choose a song to start listening" android:textColor="#FFFFFF" android:textSize="16sp" android:textStyle="bold" android:paddingTop="8dp" android:paddingBottom="12dp"/>
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-<Button android:id="@+id/localPrevious" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:text="|◀" android:textAllCaps="false" style="@style/Widget.Orbit.GhostButton"/>
-<Button android:id="@+id/localToggle" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:text="▶ / ❚❚" android:textAllCaps="false" style="@style/Widget.Orbit.PrimaryButton"/>
-<Button android:id="@+id/localNext" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:text="▶|" android:textAllCaps="false" style="@style/Widget.Orbit.GhostButton"/></LinearLayout></LinearLayout></com.google.android.material.card.MaterialCardView>
-<com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#151C2D" app:cardCornerRadius="22dp" app:strokeColor="#29334B" app:strokeWidth="1dp" app:cardElevation="0dp" android:layout_marginTop="16dp" android:layout_marginBottom="24dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AUDIO DOWNLOAD" android:textColor="#FFFFFF" android:textSize="15sp" android:textStyle="bold"/>
-<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Download direct audio links you have permission to save." android:textColor="#98A4BD" android:textSize="12sp" android:paddingTop="4dp" android:paddingBottom="10dp"/>
-<EditText android:id="@+id/audioUrl" android:layout_width="match_parent" android:layout_height="50dp" android:hint="Direct HTTPS audio URL" android:inputType="textUri" android:singleLine="true" android:textColor="#FFFFFF" android:textColorHint="#7F8AA3" android:paddingStart="14dp" android:background="@drawable/orbit_input"/>
-<Button android:id="@+id/downloadAudio" android:layout_width="match_parent" android:layout_height="48dp" android:text="Download audio" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton" android:layout_marginTop="10dp"/>
-<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Spotify songs cannot be downloaded through Orbit Music." android:textColor="#78849C" android:textSize="11sp" android:paddingTop="8dp"/></LinearLayout></com.google.android.material.card.MaterialCardView>
-</LinearLayout></ScrollView>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#121212">
+ <ScrollView android:id="@+id/mainScroll" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="10dp">
+   <LinearLayout android:layout_width="match_parent" android:layout_height="64dp" android:gravity="center_vertical" android:paddingHorizontal="18dp">
+    <TextView android:id="@+id/profileButton" android:layout_width="42dp" android:layout_height="42dp" android:gravity="center" android:background="@drawable/ic_orbit_launcher" android:text="O" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="20sp"/>
+    <TextView android:id="@+id/pageTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:paddingStart="14dp" android:text="Good evening" android:textColor="#FFFFFF" android:textSize="27sp" android:textStyle="bold"/>
+    <TextView android:id="@+id/settingsButton" android:layout_width="42dp" android:layout_height="42dp" android:gravity="center" android:text="⚙" android:textColor="#FFFFFF" android:textSize="26sp"/>
+   </LinearLayout>
+   <LinearLayout android:id="@+id/homeContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="18dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="2">
+     <TextView android:layout_width="0dp" android:layout_height="72dp" android:layout_weight="1" android:layout_margin="4dp" android:gravity="center_vertical" android:padding="12dp" android:background="#315B8E" android:text="♫  Liked Songs" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="15sp"/>
+     <TextView android:layout_width="0dp" android:layout_height="72dp" android:layout_weight="1" android:layout_margin="4dp" android:gravity="center_vertical" android:padding="12dp" android:background="#5A315F" android:text="Your Playlists" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="15sp"/>
+    </LinearLayout>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Made for you" android:textColor="#FFFFFF" android:textSize="23sp" android:textStyle="bold" android:paddingTop="22dp" android:paddingBottom="12dp"/>
+    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none">
+     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+      <LinearLayout android:layout_width="156dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginEnd="12dp">
+       <TextView android:layout_width="156dp" android:layout_height="156dp" android:gravity="center" android:background="#263B5A" android:text="♫" android:textColor="#B9D9FF" android:textSize="56sp"/>
+       <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Daily Mix 01" android:textColor="#FFFFFF" android:textStyle="bold" android:paddingTop="8dp"/>
+       <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your favourite artists" android:textColor="#B3B3B3" android:textSize="12sp"/>
+      </LinearLayout>
+      <LinearLayout android:layout_width="156dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginEnd="12dp">
+       <TextView android:layout_width="156dp" android:layout_height="156dp" android:gravity="center" android:background="#49364D" android:text="♫" android:textColor="#F2C8FF" android:textSize="56sp"/>
+       <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Daily Mix 02" android:textColor="#FFFFFF" android:textStyle="bold" android:paddingTop="8dp"/>
+       <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Discover more music" android:textColor="#B3B3B3" android:textSize="12sp"/>
+      </LinearLayout>
+      <LinearLayout android:layout_width="156dp" android:layout_height="wrap_content" android:orientation="vertical">
+       <TextView android:layout_width="156dp" android:layout_height="156dp" android:gravity="center" android:background="#22564E" android:text="♫" android:textColor="#B7F3DE" android:textSize="56sp"/>
+       <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Chill Mix" android:textColor="#FFFFFF" android:textStyle="bold" android:paddingTop="8dp"/>
+       <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Relax and unwind" android:textColor="#B3B3B3" android:textSize="12sp"/>
+      </LinearLayout>
+     </LinearLayout>
+    </HorizontalScrollView>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Recently played" android:textColor="#FFFFFF" android:textSize="23sp" android:textStyle="bold" android:paddingTop="26dp" android:paddingBottom="12dp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+     <TextView android:layout_width="0dp" android:layout_height="70dp" android:layout_weight="1" android:layout_margin="3dp" android:gravity="center" android:background="#292929" android:text="♫  Your Mix" android:textColor="#FFFFFF"/>
+     <TextView android:layout_width="0dp" android:layout_height="70dp" android:layout_weight="1" android:layout_margin="3dp" android:gravity="center" android:background="#292929" android:text="♫  Favourite" android:textColor="#FFFFFF"/>
+    </LinearLayout>
+    <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="22dp" app:cardBackgroundColor="#242424" app:cardCornerRadius="18dp" app:strokeWidth="0dp">
+     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Connect your Spotify" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="18sp"/>
+      <TextView android:id="@+id/spotifyStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Spotify is not connected" android:textColor="#B3B3B3" android:paddingTop="5dp"/>
+      <Button android:id="@+id/spotifyConnect" android:layout_width="match_parent" android:layout_height="48dp" android:text="Connect Spotify" android:textAllCaps="false" style="@style/Widget.Orbit.PrimaryButton"/>
+      <EditText android:id="@+id/playlistUrl" android:layout_width="match_parent" android:layout_height="48dp" android:hint="Paste Spotify playlist link" android:inputType="textUri" android:textColor="#FFFFFF" android:textColorHint="#999999" android:background="@drawable/orbit_input" android:paddingHorizontal="12dp"/>
+      <Button android:id="@+id/openPlaylist" android:layout_width="match_parent" android:layout_height="46dp" android:text="Play playlist" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton"/>
+      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+       <Button android:id="@+id/spotifyPrevious" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:text="|◀" style="@style/Widget.Orbit.GhostButton"/>
+       <Button android:id="@+id/spotifyToggle" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:text="▶ / ❚❚" style="@style/Widget.Orbit.GhostButton"/>
+       <Button android:id="@+id/spotifyNext" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:text="▶|" style="@style/Widget.Orbit.GhostButton"/>
+      </LinearLayout>
+     </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+   </LinearLayout>
+   <LinearLayout android:id="@+id/searchContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:visibility="gone">
+    <EditText android:id="@+id/searchSongs" android:layout_width="match_parent" android:layout_height="58dp" android:hint="⌕  What do you want to listen to?" android:singleLine="true" android:textColor="#111111" android:textColorHint="#555555" android:backgroundTint="#FFFFFF" android:padding="12dp"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Browse all" android:textColor="#FFFFFF" android:textSize="23sp" android:textStyle="bold" android:paddingTop="24dp" android:paddingBottom="14dp"/>
+    <TextView android:layout_width="match_parent" android:layout_height="112dp" android:gravity="top" android:padding="16dp" android:background="#D4148E" android:text="Music" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+    <TextView android:layout_width="match_parent" android:layout_height="112dp" android:layout_marginTop="12dp" android:gravity="top" android:padding="16dp" android:background="#006B58" android:text="Podcasts" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+    <TextView android:layout_width="match_parent" android:layout_height="112dp" android:layout_marginTop="12dp" android:gravity="top" android:padding="16dp" android:background="#7900D8" android:text="Live Events" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+    <TextView android:layout_width="match_parent" android:layout_height="112dp" android:layout_marginTop="12dp" android:gravity="top" android:padding="16dp" android:background="#203967" android:text="Home of I-Pop" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+   </LinearLayout>
+   <LinearLayout android:id="@+id/libraryContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:visibility="gone">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+     <Button android:id="@+id/scanMusic" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:text="＋ Add music" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton"/>
+     <Button android:id="@+id/downloadAudio" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:text="Download" android:textAllCaps="false" style="@style/Widget.Orbit.SecondaryButton"/>
+    </LinearLayout>
+    <EditText android:id="@+id/audioUrl" android:layout_width="match_parent" android:layout_height="48dp" android:hint="Direct HTTPS audio URL" android:inputType="textUri" android:textColor="#FFFFFF" android:textColorHint="#999999" android:background="@drawable/orbit_input" android:paddingHorizontal="12dp" android:layout_marginTop="8dp"/>
+    <TextView android:id="@+id/localStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your songs will appear here" android:textColor="#B3B3B3" android:paddingTop="14dp"/>
+    <ListView android:id="@+id/songList" android:layout_width="match_parent" android:layout_height="380dp" android:divider="#333333" android:dividerHeight="1dp" android:background="#181818"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Now playing" android:textColor="#FFFFFF" android:textSize="20sp" android:textStyle="bold" android:paddingTop="18dp"/>
+    <TextView android:id="@+id/currentSong" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Choose a song to start listening" android:textColor="#FFFFFF" android:padding="10dp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+     <Button android:id="@+id/localPrevious" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:text="|◀" style="@style/Widget.Orbit.GhostButton"/>
+     <Button android:id="@+id/localToggle" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:text="▶ / ❚❚" style="@style/Widget.Orbit.PrimaryButton"/>
+     <Button android:id="@+id/localNext" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:text="▶|" style="@style/Widget.Orbit.GhostButton"/>
+    </LinearLayout>
+   </LinearLayout>
+   <LinearLayout android:id="@+id/profileContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="22dp" android:visibility="gone">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your Orbit profile" android:textColor="#FFFFFF" android:textSize="25sp" android:textStyle="bold"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="View profile  •  Add account" android:textColor="#B3B3B3" android:textSize="16sp" android:paddingTop="16dp"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Recents\n\nYour Updates\n\nSettings and privacy" android:textColor="#FFFFFF" android:textSize="18sp" android:paddingTop="26dp"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Account  •  Content and display  •  Privacy and social  •  Playback  •  Notifications  •  Apps and devices  •  Data-saving and offline  •  Media quality  •  About and support" android:textColor="#B3B3B3" android:lineSpacingExtra="9dp" android:paddingTop="24dp"/>
+   </LinearLayout>
+  </LinearLayout>
+ </ScrollView>
+ <LinearLayout android:layout_width="match_parent" android:layout_height="64dp" android:orientation="horizontal" android:gravity="center" android:background="#080808">
+  <TextView android:id="@+id/navHome" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="⌂\nHome" android:textColor="#FFFFFF" android:textSize="13sp"/>
+  <TextView android:id="@+id/navSearch" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="⌕\nSearch" android:textColor="#B3B3B3" android:textSize="13sp"/>
+  <TextView android:id="@+id/navLibrary" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="▥\nLibrary" android:textColor="#B3B3B3" android:textSize="13sp"/>
+  <TextView android:id="@+id/navPremium" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="◉\nPremium" android:textColor="#B3B3B3" android:textSize="13sp"/>
+  <TextView android:id="@+id/navProfile" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="☻\nProfile" android:textColor="#B3B3B3" android:textSize="13sp"/>
+ </LinearLayout>
+</LinearLayout>
