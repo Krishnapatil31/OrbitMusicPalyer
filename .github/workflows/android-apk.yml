@@ -46,7 +46,7 @@ jobs:
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs "$APK"
 
       - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: OrbitMusicPlayer-v1.2.0-debug-apk
           path: app/build/outputs/apk/debug/*.apk
